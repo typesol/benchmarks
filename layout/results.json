@@ -1,0 +1,224 @@
+{
+  "generated": "2026-10-28T00:22:31.934Z",
+  "rows": [
+    {
+      "step": "create",
+      "typesol (fixed)": 2030,
+      "pinocchio (fixed)": 3370,
+      "anchor zero-copy": 6626,
+      "typesol (anchor layout)": 1996,
+      "typesol (@layout borsh)": 2181,
+      "pinocchio (borsh)": 3375,
+      "native (borsh)": 5198,
+      "anchor": 7276
+    },
+    {
+      "step": "bump (empty lists)",
+      "typesol (fixed)": 118,
+      "pinocchio (fixed)": 178,
+      "anchor zero-copy": 1259,
+      "typesol (anchor layout)": 171,
+      "typesol (@layout borsh)": 381,
+      "pinocchio (borsh)": 304,
+      "native (borsh)": 1604,
+      "anchor": 2627
+    },
+    {
+      "step": "addTag #1",
+      "typesol (fixed)": 115,
+      "pinocchio (fixed)": 187,
+      "anchor zero-copy": 1282,
+      "typesol (anchor layout)": 202,
+      "typesol (@layout borsh)": 392,
+      "pinocchio (borsh)": 305,
+      "native (borsh)": 1704,
+      "anchor": 2776
+    },
+    {
+      "step": "addTag #2",
+      "typesol (fixed)": 115,
+      "pinocchio (fixed)": 187,
+      "anchor zero-copy": 1282,
+      "typesol (anchor layout)": 202,
+      "typesol (@layout borsh)": 410,
+      "pinocchio (borsh)": 305,
+      "native (borsh)": 1823,
+      "anchor": 2909
+    },
+    {
+      "step": "addTag #3",
+      "typesol (fixed)": 115,
+      "pinocchio (fixed)": 187,
+      "anchor zero-copy": 1282,
+      "typesol (anchor layout)": 202,
+      "typesol (@layout borsh)": 422,
+      "pinocchio (borsh)": 305,
+      "native (borsh)": 1879,
+      "anchor": 2981
+    },
+    {
+      "step": "bump (3 tags)",
+      "typesol (fixed)": 118,
+      "pinocchio (fixed)": 178,
+      "anchor zero-copy": 1259,
+      "typesol (anchor layout)": 171,
+      "typesol (@layout borsh)": 430,
+      "pinocchio (borsh)": 304,
+      "native (borsh)": 1820,
+      "anchor": 2886
+    },
+    {
+      "step": "setBadge Some",
+      "typesol (fixed)": 118,
+      "pinocchio (fixed)": 161,
+      "anchor zero-copy": 1262,
+      "typesol (anchor layout)": 205,
+      "typesol (@layout borsh)": 432,
+      "pinocchio (borsh)": 293,
+      "native (borsh)": 1858,
+      "anchor": 2927
+    },
+    {
+      "step": "rename longer",
+      "typesol (fixed)": 287,
+      "pinocchio (fixed)": 412,
+      "anchor zero-copy": 1642,
+      "typesol (anchor layout)": 355,
+      "typesol (@layout borsh)": 631,
+      "pinocchio (borsh)": 500,
+      "native (borsh)": 2177,
+      "anchor": 3305
+    },
+    {
+      "step": "bump (long name)",
+      "typesol (fixed)": 118,
+      "pinocchio (fixed)": 178,
+      "anchor zero-copy": 1259,
+      "typesol (anchor layout)": 170,
+      "typesol (@layout borsh)": 486,
+      "pinocchio (borsh)": 305,
+      "native (borsh)": 1961,
+      "anchor": 3041
+    },
+    {
+      "step": "rename shorter",
+      "typesol (fixed)": 218,
+      "pinocchio (fixed)": 280,
+      "anchor zero-copy": 1498,
+      "typesol (anchor layout)": 257,
+      "typesol (@layout borsh)": 544,
+      "pinocchio (borsh)": 368,
+      "native (borsh)": 2135,
+      "anchor": 3226
+    },
+    {
+      "step": "setBadge None",
+      "typesol (fixed)": 115,
+      "pinocchio (fixed)": 158,
+      "anchor zero-copy": 1259,
+      "typesol (anchor layout)": 199,
+      "typesol (@layout borsh)": 397,
+      "pinocchio (borsh)": 259,
+      "native (borsh)": 1787,
+      "anchor": 2844
+    },
+    {
+      "step": "addTag #4",
+      "typesol (fixed)": 115,
+      "pinocchio (fixed)": 187,
+      "anchor zero-copy": 1282,
+      "typesol (anchor layout)": 202,
+      "typesol (@layout borsh)": 398,
+      "pinocchio (borsh)": 305,
+      "native (borsh)": 1892,
+      "anchor": 3010
+    },
+    {
+      "step": "addTag #5",
+      "typesol (fixed)": 115,
+      "pinocchio (fixed)": 187,
+      "anchor zero-copy": 1282,
+      "typesol (anchor layout)": 202,
+      "typesol (@layout borsh)": 410,
+      "pinocchio (borsh)": 305,
+      "native (borsh)": 1948,
+      "anchor": 3082
+    },
+    {
+      "step": "addTag #6",
+      "typesol (fixed)": 115,
+      "pinocchio (fixed)": 187,
+      "anchor zero-copy": 1282,
+      "typesol (anchor layout)": 202,
+      "typesol (@layout borsh)": 422,
+      "pinocchio (borsh)": 305,
+      "native (borsh)": 2004,
+      "anchor": 3154
+    },
+    {
+      "step": "addTag #7",
+      "typesol (fixed)": 115,
+      "pinocchio (fixed)": 187,
+      "anchor zero-copy": 1282,
+      "typesol (anchor layout)": 202,
+      "typesol (@layout borsh)": 434,
+      "pinocchio (borsh)": 305,
+      "native (borsh)": 2060,
+      "anchor": 3226
+    },
+    {
+      "step": "addTag #8",
+      "typesol (fixed)": 115,
+      "pinocchio (fixed)": 187,
+      "anchor zero-copy": 1282,
+      "typesol (anchor layout)": 202,
+      "typesol (@layout borsh)": 448,
+      "pinocchio (borsh)": 305,
+      "native (borsh)": 2116,
+      "anchor": 3298
+    },
+    {
+      "step": "bump (8 tags)",
+      "typesol (fixed)": 118,
+      "pinocchio (fixed)": 178,
+      "anchor zero-copy": 1259,
+      "typesol (anchor layout)": 171,
+      "typesol (@layout borsh)": 456,
+      "pinocchio (borsh)": 304,
+      "native (borsh)": 2058,
+      "anchor": 3204
+    },
+    {
+      "step": "rename (8 tags)",
+      "typesol (fixed)": 287,
+      "pinocchio (fixed)": 412,
+      "anchor zero-copy": 1642,
+      "typesol (anchor layout)": 356,
+      "typesol (@layout borsh)": 667,
+      "pinocchio (borsh)": 499,
+      "native (borsh)": 2376,
+      "anchor": 3570
+    },
+    {
+      "step": "total (8 tags)",
+      "typesol (fixed)": 259,
+      "pinocchio (fixed)": 319,
+      "anchor zero-copy": 1022,
+      "typesol (anchor layout)": 305,
+      "typesol (@layout borsh)": 462,
+      "pinocchio (borsh)": 526,
+      "native (borsh)": 1419,
+      "anchor": 1671
+    }
+  ],
+  "binaryKb": {
+    "typesol (fixed)": 19.2,
+    "pinocchio (fixed)": 25.8,
+    "anchor zero-copy": 144.8,
+    "typesol (anchor layout)": 20.4,
+    "typesol (@layout borsh)": 23.8,
+    "pinocchio (borsh)": 36,
+    "native (borsh)": 65.8,
+    "anchor": 158.9
+  }
+}

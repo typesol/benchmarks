@@ -1,0 +1,51 @@
+name: bench
+
+# run.ts on every push and pull request; the official examples (slow to build) on demand.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      official:
+        description: "Also build and run the official examples"
+        type: boolean
+        default: false
+
+jobs:
+  bench:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Cache Agave CLI, platform-tools and cargo
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.local/share/solana
+            ~/.cache/solana
+            ~/.cargo/registry
+            target
+            vendor/typesol/bench/anchor/target
+          key: bench-agave-3.1.10-${{ hashFiles('package-lock.json', 'Cargo.lock') }}
+      - name: Install Agave CLI and platform-tools
+        run: |
+          [ -x ~/.local/share/solana/install/active_release/bin/solana ] || sh -c "$(curl -sSfL https://release.anza.xyz/v3.1.10/install)"
+          echo "$HOME/.local/share/solana/install/active_release/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+          for i in 1 2 3 4; do cargo-build-sbf --install-only --tools-version v1.52 && break; sleep $((i * 15)); done
+      - run: npm ci --no-audit --no-fund
+      - run: bash scripts/setup.sh
+      - run: node run.ts
+      - name: Official examples
+        if: ${{ inputs.official }}
+        run: bash official/build.sh && node official.ts
+      - uses: actions/upload-artifact@v4
+        with:
+          name: results
+          path: results.json

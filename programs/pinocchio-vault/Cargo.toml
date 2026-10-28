@@ -1,0 +1,13 @@
+[package]
+name = "pinocchio_vault"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[dependencies]
+pinocchio = { version = "=0.10.2", features = ["cpi"] }
+
+[lints.rust]
+unexpected_cfgs = { level = "allow" }

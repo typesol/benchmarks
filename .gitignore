@@ -1,0 +1,19 @@
+# Dependencies and the pinned TypeSOL sources (scripts/setup.sh)
+node_modules/
+vendor/
+
+# Build output
+target/
+official/program-examples/
+official/target/
+official/deploy/
+official/build.log
+layout/*/target/
+layout/*.so
+layout/*.c
+layout/out-borsh/
+
+# Program keypairs are generated per build; none belong here.
+*-keypair.json
+
+.DS_Store

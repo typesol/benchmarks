@@ -1,0 +1,10 @@
+# The same counter, vault and escrow programs written with native Rust (solana-program) and Pinocchio, for comparison with
+# TypeSOL and Anchor. Every implementation uses the same instruction discriminators, account layouts and error codes.
+[workspace]
+members = ["programs/*"]
+resolver = "2"
+
+[profile.release]
+overflow-checks = true
+lto = "fat"
+codegen-units = 1

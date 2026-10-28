@@ -1,0 +1,9 @@
+# Layout experiment: the Profile program in native Rust (Borsh) and Pinocchio (Borsh-packed and fixed layouts).
+[workspace]
+members = ["programs/*"]
+resolver = "2"
+
+[profile.release]
+overflow-checks = true
+lto = "fat"
+codegen-units = 1

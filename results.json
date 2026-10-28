@@ -1,0 +1,560 @@
+{
+  "generated": "2026-10-28T13:01:09.969Z",
+  "rounds": 20,
+  "programs": {
+    "counter": {
+      "cu": {
+        "initialize": {
+          "typesol": 1866,
+          "anchor": 6573,
+          "native": 4601,
+          "pinocchio": 3186
+        },
+        "increment": {
+          "typesol": 110,
+          "anchor": 2323,
+          "native": 857,
+          "pinocchio": 113
+        }
+      },
+      "binaryKb": {
+        "typesol": 13.1,
+        "anchor": 145.2,
+        "native": 27.9,
+        "pinocchio": 19.6
+      }
+    },
+    "vault": {
+      "cu": {
+        "open": {
+          "typesol": 1885,
+          "anchor": 6627,
+          "native": 4613,
+          "pinocchio": 3185
+        },
+        "deposit": {
+          "typesol": 1314,
+          "anchor": 4355,
+          "native": 2832,
+          "pinocchio": 1377
+        },
+        "withdraw": {
+          "typesol": 315,
+          "anchor": 3628,
+          "native": 1176,
+          "pinocchio": 370
+        },
+        "shut": {
+          "typesol": 161,
+          "anchor": 2024,
+          "native": 950,
+          "pinocchio": 167
+        }
+      },
+      "binaryKb": {
+        "typesol": 16.5,
+        "anchor": 158.9,
+        "native": 35,
+        "pinocchio": 22.9
+      }
+    },
+    "escrow": {
+      "cu": {
+        "make": {
+          "typesol": 3605,
+          "anchor": 13304,
+          "native": 9240,
+          "pinocchio": 6179
+        },
+        "take": {
+          "typesol": 4035,
+          "anchor": 14365,
+          "native": 8500,
+          "pinocchio": 4051
+        },
+        "refund": {
+          "typesol": 2716,
+          "anchor": 8449,
+          "native": 5695,
+          "pinocchio": 2769
+        }
+      },
+      "binaryKb": {
+        "typesol": 23.9,
+        "anchor": 190.7,
+        "native": 46.5,
+        "pinocchio": 29.4
+      }
+    }
+  },
+  "official": {
+    "source": "solana-developers/program-examples@de09019 (MIT)",
+    "generated": "2026-10-28T12:07:01.080Z",
+    "programs": {
+      "account-data": {
+        "source": "basics/account-data",
+        "cu": {
+          "create_address_info (tx)": {
+            "typesol": 2177,
+            "anchor": 6212,
+            "native": 4958,
+            "pinocchio": 1418
+          }
+        },
+        "binaryKb": {
+          "typesol": 13.2,
+          "anchor": 131.3,
+          "native": 82.5,
+          "pinocchio": 12.7
+        },
+        "notes": "Measured as the whole creating transaction; every variant creates the keypair account with a CPI inside the instruction. Account layouts differ (Anchor and TypeSOL: Borsh Strings in 171 bytes; native: Borsh sized to the data; Pinocchio: fixed 51-byte record with 16-byte fields); the decoded fields are compared. The native version does not check the system program account; Pinocchio caps each string at 16 bytes."
+      },
+      "checking-accounts": {
+        "source": "basics/checking-accounts",
+        "cu": {
+          "check_accounts": {
+            "typesol": 115,
+            "anchor": 1686,
+            "native": 5225,
+            "pinocchio": 4300
+          }
+        },
+        "binaryKb": {
+          "typesol": 3,
+          "anchor": 61.8,
+          "native": 28.7,
+          "pinocchio": 13.6
+        },
+        "notes": "The native and Pinocchio versions also log both account addresses and require the account to create to hold no lamports; Anchor (and the TypeSOL port) leave that account unchecked. The native version does not check that the payer signed. account to create already holds lamports: accepted by typesol, anchor; refused by native, pinocchio.",
+        "probes": {
+          "account to change owned by the System Program": {
+            "typesol": "refused",
+            "anchor": "refused",
+            "native": "refused",
+            "pinocchio": "refused"
+          },
+          "account to create already holds lamports": {
+            "typesol": "accepted",
+            "anchor": "accepted",
+            "native": "refused",
+            "pinocchio": "refused"
+          }
+        }
+      },
+      "close-account": {
+        "source": "basics/close-account",
+        "cu": {
+          "create_user": {
+            "typesol": 2461,
+            "anchor": 8866,
+            "native": 7574,
+            "pinocchio": 1408
+          },
+          "close_user": {
+            "typesol": 712,
+            "anchor": 3795,
+            "native": 4829,
+            "pinocchio": 3659
+          }
+        },
+        "binaryKb": {
+          "typesol": 16.4,
+          "anchor": 151.9,
+          "native": 87.5,
+          "pinocchio": 15
+        },
+        "notes": "The native and Pinocchio versions store only the name (Pinocchio: a fixed 16-byte field, with the bump passed by the client), not the bump and user key Anchor stores; on close they keep the rent of an empty account in it (0 bytes, owned by the System Program) where Anchor and TypeSOL close it entirely. Pinocchio's create_user signs with the bump the client passes and does not search for it (the others derive the canonical bump on chain, a find_program_address of several thousand CU); its close_user does the search. Compared: the stored name, and that the closed account holds no data and is no longer owned by the program.",
+        "probes": {
+          "stranger closes another user's account": {
+            "typesol": "refused",
+            "anchor": "refused",
+            "native": "refused",
+            "pinocchio": "refused"
+          }
+        }
+      },
+      "counter": {
+        "source": "basics/counter",
+        "cu": {
+          "increment": {
+            "typesol": 74,
+            "anchor": 1469,
+            "native": 1010,
+            "pinocchio": 295
+          }
+        },
+        "binaryKb": {
+          "typesol": 10.7,
+          "anchor": 136.4,
+          "native": 38.4,
+          "pinocchio": 12.5
+        },
+        "notes": "Only increment is compared: the native and Pinocchio versions have no initialize (the client creates a zeroed 8-byte account), while Anchor's initialize_counter creates the account itself. The native and Pinocchio increment do not check the account's owner or type.",
+        "probes": {
+          "increment past u64::MAX": {
+            "typesol": "refused",
+            "anchor": "refused",
+            "native": "refused",
+            "pinocchio": "refused"
+          }
+        }
+      },
+      "create-account": {
+        "source": "basics/create-account",
+        "cu": {
+          "create_system_account": {
+            "typesol": 4056,
+            "anchor": 7873,
+            "native": 6782,
+            "pinocchio": 4134
+          }
+        },
+        "binaryKb": {
+          "typesol": 15.4,
+          "anchor": 127.3,
+          "native": 81.5,
+          "pinocchio": 12
+        },
+        "notes": "The native and Pinocchio versions size the account by the instruction data length and do not decode it. Anchor, native and TypeSOL log the new address as base58 (Anchor and native via to_string)."
+      },
+      "cross-program-invocation": {
+        "source": "basics/cross-program-invocation",
+        "cu": {
+          "initialize (tx)": {
+            "typesol": 1476,
+            "anchor": 4777,
+            "native": 3189,
+            "pinocchio": 1370
+          },
+          "pull_lever": {
+            "typesol": 1696,
+            "anchor": 5765,
+            "native": 3608,
+            "pinocchio": 1497
+          }
+        },
+        "binaryKb": {
+          "typesol": 18,
+          "anchor": 250.2,
+          "native": 135.7,
+          "pinocchio": 22.3
+        },
+        "notes": "Binary sizes are hand + lever. initialize (tx) is the whole transaction that creates and initializes the power account: every variant creates it inside lever's initialize (CreateAccount CPI). pull_lever includes the CPI into lever. Anchor and TypeSOL hand check that power is a lever PowerStatus account before the CPI; the native and Pinocchio hand forward any account (lever's own data parsing and the runtime's owner rule still stop a foreign account).",
+        "probes": {
+          "pull_lever on an account lever does not own": {
+            "typesol": "refused",
+            "anchor": "refused",
+            "native": "refused",
+            "pinocchio": "refused"
+          }
+        }
+      },
+      "favorites": {
+        "source": "basics/favorites",
+        "cu": {
+          "set_favorites (create)": {
+            "typesol": 6566,
+            "anchor": 16980,
+            "native": 16130,
+            "pinocchio": 3021
+          }
+        },
+        "binaryKb": {
+          "typesol": 25.5,
+          "anchor": 160.2,
+          "native": 101.4,
+          "pinocchio": 23.6
+        },
+        "notes": "Only the first set_favorites, which creates the user's PDA, is compared: the native and Pinocchio versions refuse to write an existing account (Anchor and TypeSOL overwrite it), and they have no update. The variants store different layouts: Anchor and TypeSOL 344 bytes with Borsh strings, native exactly the Borsh size, Pinocchio 80 bytes of fixed fields (color 8 bytes, 4 hobbies of 16) with the bump passed by the client (no on-chain bump search); the PDA seed is \"favorites\" in Anchor/TypeSOL and \"favorite\" in native/Pinocchio. Pinocchio does not check that the instruction data fits its layout beyond the copy. a second set_favorites (update): accepted by typesol, anchor; refused by native, pinocchio.",
+        "probes": {
+          "a second set_favorites (update)": {
+            "typesol": "accepted",
+            "anchor": "accepted",
+            "native": "refused",
+            "pinocchio": "refused"
+          },
+          "set_favorites by another signer on this user's PDA": {
+            "typesol": "refused",
+            "anchor": "refused",
+            "native": "refused",
+            "pinocchio": "refused"
+          }
+        }
+      },
+      "pda-rent-payer": {
+        "source": "basics/pda-rent-payer",
+        "cu": {
+          "init_rent_vault": {
+            "typesol": 1929,
+            "anchor": 6058,
+            "native": 6757,
+            "pinocchio": 2968
+          },
+          "create_new_account": {
+            "typesol": 2124,
+            "anchor": 7178,
+            "native": 4370,
+            "pinocchio": 1780
+          }
+        },
+        "binaryKb": {
+          "typesol": 10.7,
+          "anchor": 115.6,
+          "native": 77.1,
+          "pinocchio": 15.8
+        },
+        "notes": "The same observable result by different means: Anchor and TypeSOL fund a System-owned vault with a System Transfer and pay for each new account with a signed System CreateAccount CPI; native and Pinocchio create the vault as a program-owned account (CreateAccount CPI) and move lamports out of it directly (no CPI) in create_new_account. The vault's owner is therefore not compared (its balance is). Native searches the bump on chain in both instructions; Pinocchio takes it from the client and checks it with create_program_address; Anchor and TypeSOL find the canonical bump on chain while checking the vault. The native and Pinocchio create_new_account do not require the new account's signature. create_new_account without the new account's signature: accepted by native, pinocchio; refused by typesol, anchor.",
+        "probes": {
+          "create_new_account without the new account's signature": {
+            "typesol": "refused",
+            "anchor": "refused",
+            "native": "accepted",
+            "pinocchio": "accepted"
+          }
+        }
+      },
+      "processing-instructions": {
+        "source": "basics/processing-instructions",
+        "cu": {
+          "go_to_park": {
+            "typesol": 372,
+            "anchor": 955,
+            "native": 808,
+            "pinocchio": 420
+          }
+        },
+        "binaryKb": {
+          "typesol": 4.1,
+          "anchor": 82.8,
+          "native": 46.6,
+          "pinocchio": 14
+        },
+        "notes": "The Pinocchio version takes the name as a fixed 8-byte field (shorter names are zero-padded) instead of a Borsh String."
+      },
+      "program-derived-addresses": {
+        "source": "basics/program-derived-addresses",
+        "cu": {
+          "create_page_visits": {
+            "typesol": 2165,
+            "anchor": 7836,
+            "native": 3880,
+            "pinocchio": 1409
+          },
+          "increment_page_visits": {
+            "typesol": 481,
+            "anchor": 3452,
+            "native": 995,
+            "pinocchio": 47
+          }
+        },
+        "binaryKb": {
+          "typesol": 12.5,
+          "anchor": 141.9,
+          "native": 71.8,
+          "pinocchio": 12.9
+        },
+        "notes": "Anchor and TypeSOL find the canonical bump on chain at creation, store it, and check the PDA against the user and the stored bump on every increment; the native and Pinocchio versions sign with the bump the client sends, do not store it (their account stays zeroed until the first increment), and their increment checks neither the address nor the owner of the account. The stored bump is therefore not compared, only the visit count. increment_page_visits naming another user: accepted by native, pinocchio; refused by typesol, anchor.",
+        "probes": {
+          "increment_page_visits naming another user": {
+            "typesol": "refused",
+            "anchor": "refused",
+            "native": "accepted",
+            "pinocchio": "accepted"
+          }
+        }
+      },
+      "transfer-sol": {
+        "source": "basics/transfer-sol",
+        "cu": {
+          "transfer_sol_with_cpi": {
+            "typesol": 1269,
+            "anchor": 3005,
+            "native": 2895,
+            "pinocchio": 1233
+          },
+          "transfer_sol_with_program": {
+            "typesol": 104,
+            "anchor": 1102,
+            "native": 838,
+            "pinocchio": 67
+          }
+        },
+        "binaryKb": {
+          "typesol": 4.9,
+          "anchor": 107.3,
+          "native": 69,
+          "pinocchio": 12.5
+        },
+        "notes": "Anchor and TypeSOL also check that the recipient is a System-owned account and that the paying account of transfer_sol_with_program is owned by the program; the native and Pinocchio versions check only the signature and leave ownership to the runtime.",
+        "probes": {
+          "transfer_sol_with_program without the paying account's signature": {
+            "typesol": "refused",
+            "anchor": "refused",
+            "native": "refused",
+            "pinocchio": "refused"
+          }
+        }
+      },
+      "create-token": {
+        "source": "tokens/create-token",
+        "cu": {
+          "create_token_mint": {
+            "typesol": 41096,
+            "anchor": 51089,
+            "native": 50891,
+            "pinocchio": 39076
+          }
+        },
+        "binaryKb": {
+          "typesol": 17.8,
+          "anchor": 171,
+          "native": 99,
+          "pinocchio": 17.1
+        },
+        "notes": "Each call creates a mint and its Metaplex metadata account; most of the cost is the Token Metadata CPI. The native and Pinocchio versions also set the mint authority as freeze authority (Anchor and TypeSOL leave it unset); the freeze authority is not part of the compared outcome. The native and Pinocchio versions do not check the metadata PDA, the program accounts or the mint authority themselves (the token and metadata programs do); the native one uses InitializeMint with the rent sysvar, the others InitializeMint2."
+      },
+      "escrow": {
+        "source": "tokens/escrow",
+        "cu": {
+          "make_offer": {
+            "typesol": 19674,
+            "anchor": 35726,
+            "native": 33206,
+            "pinocchio": 20581
+          },
+          "take_offer": {
+            "typesol": 7058,
+            "anchor": 29235,
+            "native": 24995,
+            "pinocchio": 21606
+          },
+          "refund_offer": {
+            "typesol": 4287,
+            "anchor": 15326,
+            "native": 12477,
+            "pinocchio": 8137
+          }
+        },
+        "binaryKb": {
+          "typesol": 34.7,
+          "anchor": 244.5,
+          "native": 120.4,
+          "pinocchio": 25.1
+        },
+        "notes": "The taker's mint A and the maker's mint B token accounts exist before take_offer, so no implementation creates them there. Anchor and TypeSOL move tokens with TransferChecked and check the mints' token program and the offer's account type; the native and Pinocchio versions use Transfer, read the offer without an owner or type check, and send the vault's rent to the taker and the offer's to the payer (Anchor: both to the maker). Pinocchio takes the offer's bump from the client instead of searching for it.",
+        "probes": {
+          "take naming the taker as the maker": {
+            "typesol": "refused",
+            "anchor": "refused",
+            "native": "refused",
+            "pinocchio": "refused"
+          },
+          "refund signed by someone other than the maker": {
+            "typesol": "refused",
+            "anchor": "refused",
+            "native": "refused",
+            "pinocchio": "refused"
+          }
+        }
+      },
+      "transfer-tokens": {
+        "source": "tokens/transfer-tokens",
+        "cu": {
+          "mint_token": {
+            "typesol": 6486,
+            "anchor": 18635,
+            "native": 6876,
+            "pinocchio": 13179
+          },
+          "transfer_tokens": {
+            "typesol": 8367,
+            "anchor": 23526,
+            "native": 13131,
+            "pinocchio": 7259
+          },
+          "transfer_tokens (new account)": {
+            "typesol": 24692,
+            "anchor": 46929,
+            "native": 34511,
+            "pinocchio": 18447
+          }
+        },
+        "binaryKb": {
+          "typesol": 31.1,
+          "anchor": 238.3,
+          "native": 117.7,
+          "pinocchio": 13.9
+        },
+        "notes": "create_token is not compared: the Pinocchio version creates only the mint, without the Metaplex metadata account the others create (the metadata is not part of the compared outcome). mint_token and transfer_tokens go to existing associated token accounts; 'transfer_tokens (new account)' sends to wallets whose associated token account the instruction creates. Anchor and TypeSOL take whole-token amounts and scale them by the mint's decimals; the native and Pinocchio versions take base units. The native and Pinocchio versions leave the associated-token-account and owner checks to the token programs. Anchor, TypeSOL and native skip the associated token account program for an existing account; Pinocchio calls CreateIdempotent every time.",
+        "probes": {
+          "transfer above the balance": {
+            "typesol": "refused",
+            "anchor": "refused",
+            "native": "refused",
+            "pinocchio": "refused"
+          },
+          "transfer from another wallet's account": {
+            "typesol": "refused",
+            "anchor": "refused",
+            "native": "refused",
+            "pinocchio": "refused"
+          }
+        }
+      },
+      "default-account-state": {
+        "source": "tokens/token-2022/default-account-state",
+        "cu": {
+          "initialize + update_default_state (tx)": {
+            "typesol": 8520,
+            "anchor": 15712,
+            "native": 15868,
+            "pinocchio": 9292
+          }
+        },
+        "binaryKb": {
+          "typesol": 13.3,
+          "anchor": 157.1,
+          "native": 94.6,
+          "pinocchio": 16.2
+        },
+        "notes": "One transaction per variant reaching the same mint: Anchor and TypeSOL send initialize (create, DefaultAccountState Frozen, InitializeMint2) and update_default_state(Initialized) as two instructions of that transaction; the native and Pinocchio versions do the same four steps in their single instruction. Anchor and TypeSOL check the mint's freeze authority in update_default_state; the native and Pinocchio versions leave the checks to Token-2022."
+      },
+      "mint-close-authority": {
+        "source": "tokens/token-2022/mint-close-authority",
+        "cu": {
+          "initialize": {
+            "typesol": 6346,
+            "anchor": 14169,
+            "native": 12927,
+            "pinocchio": 7060
+          }
+        },
+        "binaryKb": {
+          "typesol": 15.1,
+          "anchor": 194.1,
+          "native": 91,
+          "pinocchio": 16
+        },
+        "notes": "Only initialize is compared: the native and Pinocchio versions have no close instruction. Their mint also gets the mint authority as freeze authority, where Anchor and TypeSOL set none (the freeze authority is left out of the compared outcome); Anchor and TypeSOL also read the extension back after creating the mint and check its close authority."
+      },
+      "non-transferable": {
+        "source": "tokens/token-2022/non-transferable",
+        "cu": {
+          "initialize": {
+            "typesol": 6126,
+            "anchor": 10046,
+            "native": 12617,
+            "pinocchio": 6910
+          }
+        },
+        "binaryKb": {
+          "typesol": 11,
+          "anchor": 118.8,
+          "native": 91.1,
+          "pinocchio": 15.7
+        },
+        "notes": "The native and Pinocchio versions take the mint authority as an account and do not check the payer's or the token program's identity (the CPIs fail on a wrong one); Anchor and TypeSOL check the token and system programs by address."
+      }
+    }
+  }
+}
