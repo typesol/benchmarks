@@ -1,7 +1,7 @@
 {
   "name": "typesol-benchmarks",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "TypeSOL, Anchor, native Rust and Pinocchio: the same Solana programs, compared on compute units and binary size.",
   "license": "MIT",
@@ -19,7 +19,7 @@
     "@solana-program/token": "~0.18.0",
     "@solana-program/token-2022": "^0.20.0",
     "@solana/kit": "^8.5.0",
-    "@typesol/cli": "0.24.0",
+    "@typesol/cli": "0.24.1",
     "litesvm": "1.6.1"
   }
 }

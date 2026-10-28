@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-28T13:38:20.330Z",
+  "generated": "2026-10-28T14:39:07.971Z",
   "rounds": 20,
   "programs": {
     "counter": {
@@ -18,7 +18,7 @@
         }
       },
       "binaryKb": {
-        "typesol": 13.1,
+        "typesol": 11,
         "anchor": 145.2,
         "native": 27.9,
         "pinocchio": 19.6
@@ -52,7 +52,7 @@
         }
       },
       "binaryKb": {
-        "typesol": 16.5,
+        "typesol": 14.1,
         "anchor": 158.9,
         "native": 35,
         "pinocchio": 22.9
@@ -67,20 +67,20 @@
           "pinocchio": 6179
         },
         "take": {
-          "typesol": 4035,
+          "typesol": 4019,
           "anchor": 14365,
           "native": 8500,
           "pinocchio": 4051
         },
         "refund": {
-          "typesol": 2716,
+          "typesol": 2696,
           "anchor": 8449,
           "native": 5695,
           "pinocchio": 2769
         }
       },
       "binaryKb": {
-        "typesol": 23.9,
+        "typesol": 21.3,
         "anchor": 190.7,
         "native": 46.5,
         "pinocchio": 29.4
@@ -90,8 +90,8 @@
   "official": {
     "source": "solana-developers/program-examples@de09019 (MIT)",
     "toolchain": {
-      "typesol": "@typesol/cli@0.24.0",
-      "typesolCommit": "1abb92d47274f27e4afe7e0b52320a5eb8f7c4e9",
+      "typesol": "@typesol/cli@0.24.1",
+      "typesolCommit": "620711c5d494da5f78ea52223329bb14991e3aa0",
       "anchorLang": "1.0.2",
       "pinocchio": "0.10.2",
       "tokenMetadataSha256": "31f0a627dba051a938de650464e55cc5397a4be0fd496929c1f9cf02fe5e9011",
@@ -99,20 +99,20 @@
       "cargoBuildSbf": "solana-cargo-build-sbf 3.1.10, platform-tools v1.52, rustc 1.89.0",
       "node": "v25.9.0"
     },
-    "generated": "2026-10-28T13:38:24.385Z",
+    "generated": "2026-10-28T14:39:23.029Z",
     "programs": {
       "account-data": {
         "source": "basics/account-data",
         "cu": {
           "create_address_info (tx)": {
-            "typesol": 2177,
+            "typesol": 2176,
             "anchor": 6212,
             "native": 4958,
             "pinocchio": 1418
           }
         },
         "binaryKb": {
-          "typesol": 13.2,
+          "typesol": 11.3,
           "anchor": 131.3,
           "native": 82.5,
           "pinocchio": 12.7
@@ -130,7 +130,7 @@
           }
         },
         "binaryKb": {
-          "typesol": 3,
+          "typesol": 2.9,
           "anchor": 61.8,
           "native": 28.7,
           "pinocchio": 13.6
@@ -168,7 +168,7 @@
           }
         },
         "binaryKb": {
-          "typesol": 16.4,
+          "typesol": 14.3,
           "anchor": 151.9,
           "native": 87.5,
           "pinocchio": 15
@@ -194,7 +194,7 @@
           }
         },
         "binaryKb": {
-          "typesol": 10.7,
+          "typesol": 8.8,
           "anchor": 136.4,
           "native": 38.4,
           "pinocchio": 12.5
@@ -220,7 +220,7 @@
           }
         },
         "binaryKb": {
-          "typesol": 15.4,
+          "typesol": 13.5,
           "anchor": 127.3,
           "native": 81.5,
           "pinocchio": 12
@@ -231,7 +231,7 @@
         "source": "basics/cross-program-invocation",
         "cu": {
           "initialize (tx)": {
-            "typesol": 1476,
+            "typesol": 1475,
             "anchor": 4777,
             "native": 3189,
             "pinocchio": 1370
@@ -244,7 +244,7 @@
           }
         },
         "binaryKb": {
-          "typesol": 18,
+          "typesol": 15.9,
           "anchor": 250.2,
           "native": 135.7,
           "pinocchio": 22.3
@@ -270,7 +270,7 @@
           }
         },
         "binaryKb": {
-          "typesol": 25.5,
+          "typesol": 23.4,
           "anchor": 160.2,
           "native": 101.4,
           "pinocchio": 23.6
@@ -308,7 +308,7 @@
           }
         },
         "binaryKb": {
-          "typesol": 10.7,
+          "typesol": 8.8,
           "anchor": 115.6,
           "native": 77.1,
           "pinocchio": 15.8
@@ -334,7 +334,7 @@
           }
         },
         "binaryKb": {
-          "typesol": 4.1,
+          "typesol": 4,
           "anchor": 82.8,
           "native": 46.6,
           "pinocchio": 14
@@ -358,7 +358,7 @@
           }
         },
         "binaryKb": {
-          "typesol": 12.5,
+          "typesol": 10.5,
           "anchor": 141.9,
           "native": 71.8,
           "pinocchio": 12.9
@@ -390,7 +390,7 @@
           }
         },
         "binaryKb": {
-          "typesol": 4.9,
+          "typesol": 4.7,
           "anchor": 107.3,
           "native": 69,
           "pinocchio": 12.5
@@ -416,7 +416,7 @@
           }
         },
         "binaryKb": {
-          "typesol": 17.8,
+          "typesol": 15.9,
           "anchor": 171,
           "native": 99,
           "pinocchio": 17.1
@@ -433,20 +433,20 @@
             "pinocchio": 20581
           },
           "take_offer": {
-            "typesol": 7058,
+            "typesol": 7044,
             "anchor": 29235,
             "native": 24995,
             "pinocchio": 21606
           },
           "refund_offer": {
-            "typesol": 4287,
+            "typesol": 4271,
             "anchor": 15326,
             "native": 12477,
             "pinocchio": 8137
           }
         },
         "binaryKb": {
-          "typesol": 34.7,
+          "typesol": 32,
           "anchor": 244.5,
           "native": 120.4,
           "pinocchio": 25.1
@@ -490,7 +490,7 @@
           }
         },
         "binaryKb": {
-          "typesol": 31.1,
+          "typesol": 28.8,
           "anchor": 238.3,
           "native": 117.7,
           "pinocchio": 13.9
@@ -515,14 +515,14 @@
         "source": "tokens/token-2022/default-account-state",
         "cu": {
           "initialize + update_default_state (tx)": {
-            "typesol": 8520,
+            "typesol": 8519,
             "anchor": 15712,
             "native": 15868,
             "pinocchio": 9292
           }
         },
         "binaryKb": {
-          "typesol": 13.3,
+          "typesol": 11.3,
           "anchor": 157.1,
           "native": 94.6,
           "pinocchio": 16.2
@@ -533,14 +533,14 @@
         "source": "tokens/token-2022/mint-close-authority",
         "cu": {
           "initialize": {
-            "typesol": 6346,
+            "typesol": 6345,
             "anchor": 14169,
             "native": 12927,
             "pinocchio": 7060
           }
         },
         "binaryKb": {
-          "typesol": 15.1,
+          "typesol": 13.1,
           "anchor": 194.1,
           "native": 91,
           "pinocchio": 16
@@ -551,14 +551,14 @@
         "source": "tokens/token-2022/non-transferable",
         "cu": {
           "initialize": {
-            "typesol": 6126,
+            "typesol": 6125,
             "anchor": 10046,
             "native": 12617,
             "pinocchio": 6910
           }
         },
         "binaryKb": {
-          "typesol": 11,
+          "typesol": 9.1,
           "anchor": 118.8,
           "native": 91.1,
           "pinocchio": 15.7
@@ -568,8 +568,8 @@
     }
   },
   "toolchain": {
-    "typesol": "@typesol/cli@0.24.0",
-    "typesolCommit": "1abb92d47274f27e4afe7e0b52320a5eb8f7c4e9",
+    "typesol": "@typesol/cli@0.24.1",
+    "typesolCommit": "620711c5d494da5f78ea52223329bb14991e3aa0",
     "anchorLang": "1.0.2",
     "pinocchio": "0.10.2",
     "tokenMetadataSha256": "31f0a627dba051a938de650464e55cc5397a4be0fd496929c1f9cf02fe5e9011",

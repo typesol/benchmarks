@@ -6,6 +6,11 @@ lists changes to the benchmarks themselves: programs, scenarios, methodology and
 
 ## Unreleased
 
+## 0.1.1 — 2026-10-28
+
+- Measured with `@typesol/cli` 0.24.1 (smaller TypeSOL programs, the same results; the other implementations are
+  unchanged).
+
 ## 0.1.0 — 2026-10-28
 
 First public version.
