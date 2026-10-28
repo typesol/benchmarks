@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-28T14:39:07.971Z",
+  "generated": "2026-10-28T15:37:42.102Z",
   "rounds": 20,
   "programs": {
     "counter": {
@@ -92,6 +92,12 @@
     "toolchain": {
       "typesol": "@typesol/cli@0.24.1",
       "typesolCommit": "620711c5d494da5f78ea52223329bb14991e3aa0",
+      "typesolBuild": {
+        "clang": "clang version 20.1.7-rust-dev (https://github.com/anza-xyz/llvm-project.git 78496716176191b2dfb728e5e38501812e7467db)",
+        "sbpf": "v0",
+        "profile": false,
+        "runtimeSha256": "0c356ed8495a63023f952aeadb347a6409ada9676a89a7bfa9671ebff26e8986"
+      },
       "anchorLang": "1.0.2",
       "pinocchio": "0.10.2",
       "tokenMetadataSha256": "31f0a627dba051a938de650464e55cc5397a4be0fd496929c1f9cf02fe5e9011",
@@ -99,7 +105,7 @@
       "cargoBuildSbf": "solana-cargo-build-sbf 3.1.10, platform-tools v1.52, rustc 1.89.0",
       "node": "v25.9.0"
     },
-    "generated": "2026-10-28T14:39:23.029Z",
+    "generated": "2026-10-28T15:37:26.033Z",
     "programs": {
       "account-data": {
         "source": "basics/account-data",
@@ -149,6 +155,20 @@
             "native": "refused",
             "pinocchio": "refused"
           }
+        },
+        "probeErrors": {
+          "account to change owned by the System Program": {
+            "typesol": "Custom(2004)",
+            "anchor": "Custom(2004)",
+            "native": "IncorrectProgramId",
+            "pinocchio": "IncorrectProgramId"
+          },
+          "account to create already holds lamports": {
+            "typesol": null,
+            "anchor": null,
+            "native": "AccountAlreadyInitialized",
+            "pinocchio": "AccountAlreadyInitialized"
+          }
         }
       },
       "close-account": {
@@ -181,6 +201,14 @@
             "native": "refused",
             "pinocchio": "refused"
           }
+        },
+        "probeErrors": {
+          "stranger closes another user's account": {
+            "typesol": "Custom(2006)",
+            "anchor": "Custom(2006)",
+            "native": "IncorrectProgramId",
+            "pinocchio": "IncorrectProgramId"
+          }
         }
       },
       "counter": {
@@ -206,6 +234,14 @@
             "anchor": "refused",
             "native": "refused",
             "pinocchio": "refused"
+          }
+        },
+        "probeErrors": {
+          "increment past u64::MAX": {
+            "typesol": "Custom(5100)",
+            "anchor": "ProgramFailedToComplete",
+            "native": "ProgramFailedToComplete",
+            "pinocchio": "ProgramFailedToComplete"
           }
         }
       },
@@ -257,6 +293,14 @@
             "native": "refused",
             "pinocchio": "refused"
           }
+        },
+        "probeErrors": {
+          "pull_lever on an account lever does not own": {
+            "typesol": "Custom(3007)",
+            "anchor": "Custom(3007)",
+            "native": "BorshIoError",
+            "pinocchio": "ProgramFailedToComplete"
+          }
         }
       },
       "favorites": {
@@ -289,6 +333,20 @@
             "native": "refused",
             "pinocchio": "refused"
           }
+        },
+        "probeErrors": {
+          "a second set_favorites (update)": {
+            "typesol": null,
+            "anchor": null,
+            "native": "AccountAlreadyInitialized",
+            "pinocchio": "AccountAlreadyInitialized"
+          },
+          "set_favorites by another signer on this user's PDA": {
+            "typesol": "Custom(2006)",
+            "anchor": "Custom(2006)",
+            "native": "IncorrectProgramId",
+            "pinocchio": "InvalidSeeds"
+          }
         }
       },
       "pda-rent-payer": {
@@ -320,6 +378,14 @@
             "anchor": "refused",
             "native": "accepted",
             "pinocchio": "accepted"
+          }
+        },
+        "probeErrors": {
+          "create_new_account without the new account's signature": {
+            "typesol": "Custom(3010)",
+            "anchor": "Custom(3010)",
+            "native": null,
+            "pinocchio": null
           }
         }
       },
@@ -371,6 +437,14 @@
             "native": "accepted",
             "pinocchio": "accepted"
           }
+        },
+        "probeErrors": {
+          "increment_page_visits naming another user": {
+            "typesol": "Custom(2006)",
+            "anchor": "Custom(2006)",
+            "native": null,
+            "pinocchio": null
+          }
         }
       },
       "transfer-sol": {
@@ -402,6 +476,14 @@
             "anchor": "refused",
             "native": "refused",
             "pinocchio": "refused"
+          }
+        },
+        "probeErrors": {
+          "transfer_sol_with_program without the paying account's signature": {
+            "typesol": "Custom(3010)",
+            "anchor": "Custom(3010)",
+            "native": "MissingRequiredSignature",
+            "pinocchio": "MissingRequiredSignature"
           }
         }
       },
@@ -465,6 +547,20 @@
             "native": "refused",
             "pinocchio": "refused"
           }
+        },
+        "probeErrors": {
+          "take naming the taker as the maker": {
+            "typesol": "Custom(2040)",
+            "anchor": "Custom(2015)",
+            "native": "ProgramFailedToComplete",
+            "pinocchio": "InvalidAccountData"
+          },
+          "refund signed by someone other than the maker": {
+            "typesol": "Custom(2001)",
+            "anchor": "Custom(2006)",
+            "native": "ProgramFailedToComplete",
+            "pinocchio": "InvalidAccountData"
+          }
         }
       },
       "transfer-tokens": {
@@ -508,6 +604,20 @@
             "anchor": "refused",
             "native": "refused",
             "pinocchio": "refused"
+          }
+        },
+        "probeErrors": {
+          "transfer above the balance": {
+            "typesol": "Custom(1)",
+            "anchor": "Custom(1)",
+            "native": "Custom(1)",
+            "pinocchio": "Custom(1)"
+          },
+          "transfer from another wallet's account": {
+            "typesol": "Custom(2009)",
+            "anchor": "Custom(2015)",
+            "native": "Custom(4)",
+            "pinocchio": "Custom(4)"
           }
         }
       },
@@ -570,6 +680,12 @@
   "toolchain": {
     "typesol": "@typesol/cli@0.24.1",
     "typesolCommit": "620711c5d494da5f78ea52223329bb14991e3aa0",
+    "typesolBuild": {
+      "clang": "clang version 20.1.7-rust-dev (https://github.com/anza-xyz/llvm-project.git 78496716176191b2dfb728e5e38501812e7467db)",
+      "sbpf": "v0",
+      "profile": false,
+      "runtimeSha256": "0c356ed8495a63023f952aeadb347a6409ada9676a89a7bfa9671ebff26e8986"
+    },
     "anchorLang": "1.0.2",
     "pinocchio": "0.10.2",
     "tokenMetadataSha256": "31f0a627dba051a938de650464e55cc5397a4be0fd496929c1f9cf02fe5e9011",

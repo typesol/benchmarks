@@ -145,10 +145,14 @@ layouts and is kept for reference; its numbers are in `layout/results.json`, not
 | Key | Written by | Holds |
 | --- | --- | --- |
 | `generated`, `rounds`, `toolchain`, `programs` | `run.ts` | mean compute units per instruction and binary sizes (KB) per implementation |
-| `official` (`source`, `toolchain`, `generated`, `programs`) | `official.ts` | the same for each official example, plus `notes` and the hostile `probes` |
+| `official` (`source`, `toolchain`, `generated`, `programs`) | `official.ts` | the same for each official example, plus `notes`, the hostile `probes` and the error each refusal returned (`probeErrors`) |
 
-`toolchain` names the TypeSOL compiler (`@typesol/cli@<version>`, or a checkout), the Anchor, Pinocchio and
-solana-program crate versions, `cargo-build-sbf` with its platform-tools, and Node.
+`toolchain` names the TypeSOL compiler (`@typesol/cli@<version>`, or a checkout) and how it compiled
+(`typesolBuild`: clang, SBPF version, runtime header hash), the Anchor, Pinocchio and solana-program crate versions,
+`cargo-build-sbf` with its platform-tools, and Node.
+
+`node scripts/compare.ts <baseline.json> results.json [--official]` lists every number that differs between two
+results and exits 1 if any does; CI runs it against the committed file (see docs/methodology.md, Regressions).
 
 ## License
 

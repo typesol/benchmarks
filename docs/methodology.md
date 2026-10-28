@@ -15,8 +15,9 @@ What a number in `results.json` means, and what it does not.
   which accounts exist) must be equal in all four implementations, field by field where layouts differ; otherwise the
   program is reported as failed, not measured.
 - **Same refusals.** The hostile calls (a stranger signing, an overflow, a withdrawal below rent, a fake maker, an
-  empty offer, …) run after the outcome is captured; how each implementation handled them is in `probes`, and
-  differences are written in the program's `notes`.
+  empty offer, …) run after the outcome is captured; how each implementation handled them is in `probes`, the error
+  each refusal returned in `probeErrors` (`Custom(<code>)` for a program error), and differences are written in the
+  program's `notes`.
 - **Same addresses.** Every implementation runs at the same program address with the same deterministic wallets, so
   PDAs and bump searches cost the same.
 
@@ -41,3 +42,13 @@ implementation's instructions that call it (all four by the same amount), not th
 Check out this repository at the commit that wrote the result, keep `@typesol/cli` at the version its `toolchain`
 names, install the same Agave / platform-tools, and run `scripts/setup.sh` and the suite. LiteSVM's compute-unit model
 is deterministic: the same programs give the same numbers.
+
+`toolchain.typesolBuild` records how the TypeSOL programs were compiled: the clang of the platform-tools, the SBPF
+version, profiling off, and the sha256 of the runtime header (TypeSOL always compiles at -O2).
+
+## Regressions
+
+The `bench` workflow runs `run.ts` on every push and pull request (and the official examples on demand), then
+`scripts/compare.ts` checks the fresh numbers against the committed `results.json`. Any difference in compute units,
+binary size or a probe's outcome fails the run, with the differences listed in the job summary. A change that is meant
+to move the numbers commits the new `results.json` with it.

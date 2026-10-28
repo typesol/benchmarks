@@ -81,6 +81,8 @@ export class Ctx {
   readonly cu = new Map<string, bigint[]>();
   /** Hostile or edge calls: what each implementation did with them (reported, not compared). */
   readonly probes: Record<string, "refused" | "accepted"> = {};
+  /** The error each refused probe failed with: "Custom(2006)" for a program error code, else the runtime's error name. */
+  readonly probeErrors: Record<string, string> = {};
   readonly impl: Impl;
   readonly svm: LiteSVM;
   readonly ids: Address[];
@@ -164,6 +166,11 @@ export class Ctx {
     const res = await this.send(payer, ixs);
     const refused = res instanceof FailedTransactionMetadata;
     this.probes[what] = refused ? "refused" : "accepted";
+    if (refused) {
+      const text = String(res.err());
+      const code = /code: (\d+)/.exec(text)?.[1];
+      this.probeErrors[what] = code ? `Custom(${code})` : (/error: (\w+)/.exec(text)?.[1] ?? text);
+    }
     return refused;
   }
 

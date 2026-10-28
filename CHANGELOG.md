@@ -6,6 +6,12 @@ lists changes to the benchmarks themselves: programs, scenarios, methodology and
 
 ## Unreleased
 
+- `official.ts` records the error each refused hostile call returned (`probeErrors`): Anchor and TypeSOL as
+  `Custom(<code>)`, native and Pinocchio as the runtime's error.
+- `toolchain.typesolBuild`: the clang, SBPF version and runtime header hash the TypeSOL programs were built with.
+- CI fails when a run's numbers differ from the committed `results.json` (`scripts/compare.ts`), with the
+  differences in the job summary.
+
 ## 0.1.1 — 2026-10-28
 
 - Measured with `@typesol/cli` 0.24.1 (smaller TypeSOL programs, the same results; the other implementations are

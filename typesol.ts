@@ -18,9 +18,17 @@ type Compiler = typeof import("@typesol/cli/compiler");
 export const FROM_CHECKOUT = process.env.TYPESOL_REPO !== undefined;
 /** The TypeSOL sources: examples/, test/ports/, test/programs/, bench/anchor/. */
 export const TYPESOL = path.resolve(process.env.TYPESOL_REPO ?? path.join(HERE, "vendor/typesol"));
-export const { build } = (
+const compiler = (
   FROM_CHECKOUT ? await import(pathToFileURL(path.join(TYPESOL, "dist/compiler/index.js")).href) : await import("@typesol/cli/compiler")
 ) as Compiler;
+/** How the TypeSOL programs were compiled, from the first build's manifest (the same for every program of a run). */
+let compiled: { clang: string; sbpf: string; profile: boolean; runtimeSha256: string | null } | null = null;
+export const build: Compiler["build"] = (...args) => {
+  const res = compiler.build(...args);
+  const m = res.manifest;
+  compiled ??= { clang: m.clang, sbpf: m.sbpf, profile: m.profile, runtimeSha256: m.sources["<runtime>/typesol_rt.h"] ?? null };
+  return res;
+};
 
 const version = (pkg: string) => (JSON.parse(readFileSync(pkg, "utf8")) as { version: string }).version;
 /** What compiled the TypeSOL programs, recorded with the results. */
@@ -55,6 +63,11 @@ export function toolchain() {
     typesol: COMPILER,
     // The commit of the TypeSOL sources (the tag's commit for a released version).
     typesolCommit: firstLines(`git -C "${TYPESOL}" rev-parse HEAD`),
+    // The C toolchain, SBPF version and runtime header the TypeSOL programs were built with (TypeSOL always compiles
+    // at -O2; the flags are fixed per compiler version). A getter: read when results.json is written, after the builds.
+    get typesolBuild() {
+      return compiled;
+    },
     anchorLang: crate(path.join(TYPESOL, "bench/anchor/Cargo.lock"), "anchor-lang") ?? crate(path.join(HERE, "vendor/typesol/bench/anchor/Cargo.lock"), "anchor-lang"),
     pinocchio: crate(path.join(HERE, "Cargo.lock"), "pinocchio"),
     // Metaplex Token Metadata, which the token ports call (scripts/setup.sh dumps it from mainnet-beta).

@@ -41,11 +41,17 @@ jobs:
           for i in 1 2 3 4; do cargo-build-sbf --install-only --tools-version v1.52 && break; sleep $((i * 15)); done
       - run: npm ci --no-audit --no-fund
       - run: bash scripts/setup.sh
+      - name: Keep the committed results as the baseline
+        run: cp results.json "$RUNNER_TEMP/baseline.json"
       - run: node run.ts
       - name: Official examples
         if: ${{ inputs.official }}
         run: bash official/build.sh && node official.ts
+      # Fails when any number differs from the committed results.json; the differences are in the job summary.
+      - name: Compare with results.json
+        run: node scripts/compare.ts "$RUNNER_TEMP/baseline.json" results.json ${{ inputs.official && '--official' || '' }}
       - uses: actions/upload-artifact@v4
+        if: ${{ always() }}
         with:
           name: results
           path: results.json

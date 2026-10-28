@@ -70,7 +70,7 @@ async function runOne(ex: Example, impl: Impl) {
   const c = new Ctx(impl, svm, ids, coders);
   const outcome = await ex.scenario(c);
   for (const l of ex.labels) if (!c.cu.get(l)?.length) throw new Error(`${impl}: ${l} was never measured`);
-  return { cu: c.cu, size, outcome: canon(outcome), probes: c.probes };
+  return { cu: c.cu, size, outcome: canon(outcome), probes: c.probes, probeErrors: c.probeErrors };
 }
 
 type Entry = { cu: Record<string, Record<string, number>>; binaryKb: Record<string, number>; notes?: string };
@@ -108,7 +108,8 @@ for (const name of NAMES) {
   console.log(["instruction".padEnd(40), ...IMPLS.map((i) => i.padStart(10))].join(" "));
   for (const l of ex.labels) console.log([l.padEnd(40), ...IMPLS.map((i) => String(mean(results.get(i)!.cu.get(l)!)).padStart(10))].join(" "));
   console.log(["binary (KB)".padEnd(40), ...IMPLS.map((i) => (results.get(i)!.size / 1024).toFixed(1).padStart(10))].join(" "));
-  for (const p of probeNames) console.log(`  ${p}: ${IMPLS.map((i) => `${i} ${results.get(i)!.probes[p] ?? "-"}`).join(", ")}`);
+  const shown = (i: Impl, p: string) => results.get(i)!.probes[p] === "refused" ? `refused ${results.get(i)!.probeErrors[p]}` : (results.get(i)!.probes[p] ?? "-");
+  for (const p of probeNames) console.log(`  ${p}: ${IMPLS.map((i) => `${i} ${shown(i, p)}`).join(", ")}`);
   const notes = [ex.notes, ...probeNotes].filter(Boolean).join(" ");
   programs[name] = {
     source: ex.source,
@@ -117,6 +118,8 @@ for (const name of NAMES) {
     ...(notes ? { notes } : {}),
     // Every hostile/edge call and how each implementation handled it ("refused" / "accepted").
     ...(probeNames.length ? { probes: Object.fromEntries(probeNames.map((p) => [p, Object.fromEntries(IMPLS.map((i) => [i, results.get(i)!.probes[p] ?? null]))])) } : {}),
+    // The error each refusal returned (Anchor and TypeSOL use Anchor's codes; native and Pinocchio their own errors).
+    ...(probeNames.length ? { probeErrors: Object.fromEntries(probeNames.map((p) => [p, Object.fromEntries(IMPLS.map((i) => [i, results.get(i)!.probeErrors[p] ?? null]))])) } : {}),
   };
 }
 
