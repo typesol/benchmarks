@@ -1,11 +1,12 @@
 # Changelog
 
+Versions follow the organization's [versioning policy](https://github.com/typesol/.github/blob/main/VERSIONING.md).
 Results change with the compiler and the toolchain; each run records both in `results.json` (`toolchain`). This file
 lists changes to the benchmarks themselves: programs, scenarios, methodology and tooling.
 
 ## Unreleased
 
-## 2026-10-28
+## 0.1.0 — 2026-10-28
 
 First public version.
 

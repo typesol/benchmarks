@@ -18,8 +18,12 @@ if [ ! -d "$VENDOR/.git" ] || [ "$(git -C "$VENDOR" describe --tags --exact-matc
   git clone --quiet --depth 1 --branch "v$VERSION" https://github.com/typesol/typesol.git "$VENDOR"
 fi
 echo "TypeSOL sources: v$VERSION"
-# Metaplex and SPL program binaries some ports load (fetched from the chain, as the TypeSOL repository's CI does).
-(cd "$VENDOR" && for i in 1 2 3; do bash scripts/fetch-programs.sh devnet && break; sleep 20; done)
+# Metaplex Token Metadata, which the token ports call: dumped from mainnet-beta (the deployed version; devnet's can be
+# newer). Its sha256 goes into results.json, since an upgrade changes the numbers of the instructions that call it.
+TM="$VENDOR/test/programs/mpl_token_metadata.so"
+for i in 1 2 3; do solana program dump -u "${SOLANA_RPC:-mainnet-beta}" metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s "$TM.new" >/dev/null && break; sleep 20; done
+mv "$TM.new" "$TM"
+echo "Token Metadata: $(shasum -a 256 "$TM" | cut -c1-16)…"
 # The Anchor twins of examples/{counter,vault,escrow}.ts.
 (cd "$VENDOR/bench/anchor" && cargo-build-sbf --tools-version v1.52)
 # This repository's native and Pinocchio programs.

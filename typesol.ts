@@ -6,6 +6,7 @@
 //
 // TYPESOL_REPO=<checkout> measures unreleased work instead: that checkout's compiler (its dist/, built) and sources.
 import { execSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import path from "node:path";
@@ -41,12 +42,23 @@ const firstLines = (cmd: string): string | null => {
     return null;
   }
 };
+const sha256 = (file: string): string | null => {
+  try {
+    return createHash("sha256").update(readFileSync(file)).digest("hex");
+  } catch {
+    return null;
+  }
+};
 /** What the numbers were measured with, recorded next to them. */
 export function toolchain() {
   return {
     typesol: COMPILER,
+    // The commit of the TypeSOL sources (the tag's commit for a released version).
+    typesolCommit: firstLines(`git -C "${TYPESOL}" rev-parse HEAD`),
     anchorLang: crate(path.join(TYPESOL, "bench/anchor/Cargo.lock"), "anchor-lang") ?? crate(path.join(HERE, "vendor/typesol/bench/anchor/Cargo.lock"), "anchor-lang"),
     pinocchio: crate(path.join(HERE, "Cargo.lock"), "pinocchio"),
+    // Metaplex Token Metadata, which the token ports call (scripts/setup.sh dumps it from mainnet-beta).
+    tokenMetadataSha256: sha256(path.join(TYPESOL, "test/programs/mpl_token_metadata.so")),
     solanaProgram: crate(path.join(HERE, "Cargo.lock"), "solana-program"),
     cargoBuildSbf: firstLines("cargo-build-sbf --version"),
     node: process.version,

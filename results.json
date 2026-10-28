@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-28T13:01:09.969Z",
+  "generated": "2026-10-28T13:38:20.330Z",
   "rounds": 20,
   "programs": {
     "counter": {
@@ -89,7 +89,17 @@
   },
   "official": {
     "source": "solana-developers/program-examples@de09019 (MIT)",
-    "generated": "2026-10-28T12:07:01.080Z",
+    "toolchain": {
+      "typesol": "@typesol/cli@0.24.0",
+      "typesolCommit": "1abb92d47274f27e4afe7e0b52320a5eb8f7c4e9",
+      "anchorLang": "1.0.2",
+      "pinocchio": "0.10.2",
+      "tokenMetadataSha256": "31f0a627dba051a938de650464e55cc5397a4be0fd496929c1f9cf02fe5e9011",
+      "solanaProgram": "5.1.0",
+      "cargoBuildSbf": "solana-cargo-build-sbf 3.1.10, platform-tools v1.52, rustc 1.89.0",
+      "node": "v25.9.0"
+    },
+    "generated": "2026-10-28T13:38:24.385Z",
     "programs": {
       "account-data": {
         "source": "basics/account-data",
@@ -556,5 +566,15 @@
         "notes": "The native and Pinocchio versions take the mint authority as an account and do not check the payer's or the token program's identity (the CPIs fail on a wrong one); Anchor and TypeSOL check the token and system programs by address."
       }
     }
+  },
+  "toolchain": {
+    "typesol": "@typesol/cli@0.24.0",
+    "typesolCommit": "1abb92d47274f27e4afe7e0b52320a5eb8f7c4e9",
+    "anchorLang": "1.0.2",
+    "pinocchio": "0.10.2",
+    "tokenMetadataSha256": "31f0a627dba051a938de650464e55cc5397a4be0fd496929c1f9cf02fe5e9011",
+    "solanaProgram": "5.1.0",
+    "cargoBuildSbf": "solana-cargo-build-sbf 3.1.10, platform-tools v1.52, rustc 1.89.0",
+    "node": "v25.9.0"
   }
 }

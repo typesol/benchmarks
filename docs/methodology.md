@@ -30,6 +30,12 @@ What a number in `results.json` means, and what it does not.
 - Several TypeSOL ports of the official examples are PARTIAL (see the TypeSOL repository's `test/ports/README.md`);
   where that costs compute units it is said in `notes`.
 
+## Programs the benchmarks call
+
+The token ports call Metaplex Token Metadata. `scripts/setup.sh` dumps it from mainnet-beta, and `results.json` records
+its sha256 (`toolchain.tokenMetadataSha256`): an upgrade of that program changes the compute units of every
+implementation's instructions that call it (all four by the same amount), not the comparison.
+
 ## Reproducing a published result
 
 Check out this repository at the commit that wrote the result, keep `@typesol/cli` at the version its `toolchain`
