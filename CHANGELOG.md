@@ -6,6 +6,11 @@ lists changes to the benchmarks themselves: programs, scenarios, methodology and
 
 ## Unreleased
 
+## 0.2.0 — 2026-10-29
+
+- Measured with `@typesol/cli` 0.25.0: the escrow port checks its mints' token program as Anchor's
+  `mint::token_program` does (make_offer +23 CU, take_offer +9), and refusals return Anchor's error codes in 12 of the
+  14 hostile calls.
 - `official.ts` records the error each refused hostile call returned (`probeErrors`): Anchor and TypeSOL as
   `Custom(<code>)`, native and Pinocchio as the runtime's error.
 - `toolchain.typesolBuild`: the clang, SBPF version and runtime header hash the TypeSOL programs were built with.

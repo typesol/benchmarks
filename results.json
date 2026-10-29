@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-28T15:37:42.102Z",
+  "generated": "2026-10-29T03:11:44.432Z",
   "rounds": 20,
   "programs": {
     "counter": {
@@ -90,13 +90,13 @@
   "official": {
     "source": "solana-developers/program-examples@de09019 (MIT)",
     "toolchain": {
-      "typesol": "@typesol/cli@0.24.1",
-      "typesolCommit": "620711c5d494da5f78ea52223329bb14991e3aa0",
+      "typesol": "@typesol/cli@0.25.0",
+      "typesolCommit": "3fd81ceb3365e80db6792f6e995f188075bdb192",
       "typesolBuild": {
         "clang": "clang version 20.1.7-rust-dev (https://github.com/anza-xyz/llvm-project.git 78496716176191b2dfb728e5e38501812e7467db)",
         "sbpf": "v0",
         "profile": false,
-        "runtimeSha256": "0c356ed8495a63023f952aeadb347a6409ada9676a89a7bfa9671ebff26e8986"
+        "runtimeSha256": "d9f1e705ff9242a73c3cb1cda3a48e65ec6195e83b664e6a8a0a78b016f0b81f"
       },
       "anchorLang": "1.0.2",
       "pinocchio": "0.10.2",
@@ -105,7 +105,7 @@
       "cargoBuildSbf": "solana-cargo-build-sbf 3.1.10, platform-tools v1.52, rustc 1.89.0",
       "node": "v25.9.0"
     },
-    "generated": "2026-10-28T15:37:26.033Z",
+    "generated": "2026-10-29T03:11:48.974Z",
     "programs": {
       "account-data": {
         "source": "basics/account-data",
@@ -509,13 +509,13 @@
         "source": "tokens/escrow",
         "cu": {
           "make_offer": {
-            "typesol": 19674,
+            "typesol": 19697,
             "anchor": 35726,
             "native": 33206,
             "pinocchio": 20581
           },
           "take_offer": {
-            "typesol": 7044,
+            "typesol": 7053,
             "anchor": 29235,
             "native": 24995,
             "pinocchio": 21606
@@ -556,7 +556,7 @@
             "pinocchio": "InvalidAccountData"
           },
           "refund signed by someone other than the maker": {
-            "typesol": "Custom(2001)",
+            "typesol": "Custom(2006)",
             "anchor": "Custom(2006)",
             "native": "ProgramFailedToComplete",
             "pinocchio": "InvalidAccountData"
@@ -573,20 +573,20 @@
             "pinocchio": 13179
           },
           "transfer_tokens": {
-            "typesol": 8367,
+            "typesol": 8365,
             "anchor": 23526,
             "native": 13131,
             "pinocchio": 7259
           },
           "transfer_tokens (new account)": {
-            "typesol": 24692,
+            "typesol": 24690,
             "anchor": 46929,
             "native": 34511,
             "pinocchio": 18447
           }
         },
         "binaryKb": {
-          "typesol": 28.8,
+          "typesol": 28.7,
           "anchor": 238.3,
           "native": 117.7,
           "pinocchio": 13.9
@@ -614,7 +614,7 @@
             "pinocchio": "Custom(1)"
           },
           "transfer from another wallet's account": {
-            "typesol": "Custom(2009)",
+            "typesol": "Custom(2015)",
             "anchor": "Custom(2015)",
             "native": "Custom(4)",
             "pinocchio": "Custom(4)"
@@ -678,13 +678,13 @@
     }
   },
   "toolchain": {
-    "typesol": "@typesol/cli@0.24.1",
-    "typesolCommit": "620711c5d494da5f78ea52223329bb14991e3aa0",
+    "typesol": "@typesol/cli@0.25.0",
+    "typesolCommit": "3fd81ceb3365e80db6792f6e995f188075bdb192",
     "typesolBuild": {
       "clang": "clang version 20.1.7-rust-dev (https://github.com/anza-xyz/llvm-project.git 78496716176191b2dfb728e5e38501812e7467db)",
       "sbpf": "v0",
       "profile": false,
-      "runtimeSha256": "0c356ed8495a63023f952aeadb347a6409ada9676a89a7bfa9671ebff26e8986"
+      "runtimeSha256": "d9f1e705ff9242a73c3cb1cda3a48e65ec6195e83b664e6a8a0a78b016f0b81f"
     },
     "anchorLang": "1.0.2",
     "pinocchio": "0.10.2",
