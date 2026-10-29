@@ -6,6 +6,10 @@ lists changes to the benchmarks themselves: programs, scenarios, methodology and
 
 ## Unreleased
 
+- `results/<version>.json`: the results of every released compiler (0.24.0, 0.24.1, 0.25.0 so far), written by
+  `scripts/archive.ts` and checked in CI.
+- Dependabot for the npm tooling and GitHub Actions (not `@typesol/cli` or the measured Rust crates).
+
 ## 0.2.0 — 2026-10-29
 
 - Measured with `@typesol/cli` 0.25.0: the escrow port checks its mints' token program as Anchor's

@@ -1,0 +1,22 @@
+# Weekly updates for the tooling. Not updated here on purpose: @typesol/cli (pinned to a release; bumped with the
+# results it produced) and the Rust crates (anchor-lang, pinocchio, solana-program: their versions are part of what is
+# measured, so they change in a deliberate release with new results). An npm update that moves a number fails CI's
+# comparison with results.json.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    ignore:
+      - dependency-name: "@typesol/cli"
+    groups:
+      npm:
+        patterns: ["*"]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns: ["*"]

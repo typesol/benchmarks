@@ -41,6 +41,8 @@ jobs:
           for i in 1 2 3 4; do cargo-build-sbf --install-only --tools-version v1.52 && break; sleep $((i * 15)); done
       - run: npm ci --no-audit --no-fund
       - run: bash scripts/setup.sh
+      - name: The released compiler's results are archived
+        run: node scripts/archive.ts --check
       - name: Keep the committed results as the baseline
         run: cp results.json "$RUNNER_TEMP/baseline.json"
       - run: node run.ts
