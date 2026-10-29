@@ -6,6 +6,10 @@ lists changes to the benchmarks themselves: programs, scenarios, methodology and
 
 ## Unreleased
 
+- Mainnet: a second escrow run on 2026-10-29, after the TypeSOL program was upgraded in place to 0.25.0 (the others
+  unchanged). `results/mainnet-escrow.json` holds every run; the one before the upgrade is also in
+  `results/mainnet-escrow-2026-10-27.json`.
+
 - The mainnet run's result moved to `results/mainnet-escrow.json`.
 - The Anchor twins are found at `test/anchor-twins` in TypeSOL checkouts after 0.25.0, and at `bench/anchor` before.
 
