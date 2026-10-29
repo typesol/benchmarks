@@ -151,6 +151,10 @@ layouts and is kept for reference; its numbers are in `layout/results.json`, not
 (`typesolBuild`: clang, SBPF version, runtime header hash), the Anchor, Pinocchio and solana-program crate versions,
 `cargo-build-sbf` with its platform-tools, and Node.
 
+`results/<version>.json` keeps the results of every released compiler (a copy of `results.json` as committed for that
+`@typesol/cli` version; `node scripts/archive.ts` writes it, CI checks it), so the numbers can be compared across
+releases.
+
 `node scripts/compare.ts <baseline.json> results.json [--official]` lists every number that differs between two
 results and exits 1 if any does; CI runs it against the committed file (see docs/methodology.md, Regressions).
 

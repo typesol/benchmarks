@@ -39,6 +39,8 @@ implementation's instructions that call it (all four by the same amount), not th
 
 ## Reproducing a published result
 
+Each released compiler's results are in `results/<version>.json`.
+
 Check out this repository at the commit that wrote the result, keep `@typesol/cli` at the version its `toolchain`
 names, install the same Agave / platform-tools, and run `scripts/setup.sh` and the suite. LiteSVM's compute-unit model
 is deterministic: the same programs give the same numbers.
