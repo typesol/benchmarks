@@ -6,6 +6,9 @@ lists changes to the benchmarks themselves: programs, scenarios, methodology and
 
 ## Unreleased
 
+- The mainnet run's result moved to `results/mainnet-escrow.json`.
+- The Anchor twins are found at `test/anchor-twins` in TypeSOL checkouts after 0.25.0, and at `bench/anchor` before.
+
 - `results/<version>.json`: the results of every released compiler (0.24.0, 0.24.1, 0.25.0 so far), written by
   `scripts/archive.ts` and checked in CI.
 - Dependabot for the npm tooling and GitHub Actions (not `@typesol/cli` or the measured Rust crates).

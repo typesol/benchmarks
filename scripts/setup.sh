@@ -25,6 +25,8 @@ for i in 1 2 3; do solana program dump -u "${SOLANA_RPC:-mainnet-beta}" metaqbxx
 mv "$TM.new" "$TM"
 echo "Token Metadata: $(shasum -a 256 "$TM" | cut -c1-16)…"
 # The Anchor twins of examples/{counter,vault,escrow}.ts.
-(cd "$VENDOR/bench/anchor" && cargo-build-sbf --tools-version v1.52)
+# The Anchor twins: test/anchor-twins since TypeSOL 0.25.1, bench/anchor before.
+TWINS="$VENDOR/test/anchor-twins"; [ -d "$TWINS" ] || TWINS="$VENDOR/bench/anchor"
+(cd "$TWINS" && cargo-build-sbf --tools-version v1.52)
 # This repository's native and Pinocchio programs.
 cargo-build-sbf --tools-version v1.52
