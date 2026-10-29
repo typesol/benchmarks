@@ -31,6 +31,7 @@ jobs:
             ~/.cache/solana
             ~/.cargo/registry
             target
+            vendor/typesol/test/anchor-twins/target
             vendor/typesol/bench/anchor/target
           key: bench-agave-3.1.10-${{ hashFiles('package-lock.json', 'Cargo.lock') }}
       - name: Install Agave CLI and platform-tools

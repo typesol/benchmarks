@@ -7,7 +7,7 @@
 // TYPESOL_REPO=<checkout> measures unreleased work instead: that checkout's compiler (its dist/, built) and sources.
 import { execSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -15,8 +15,10 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 type Compiler = typeof import("@typesol/cli/compiler");
 
+/** The Anchor twins in a TypeSOL checkout: test/anchor-twins since 0.25.1, bench/anchor before. */
+export const twinsOf = (root: string) => [path.join(root, "test/anchor-twins"), path.join(root, "bench/anchor")].find((d) => existsSync(d)) ?? path.join(root, "test/anchor-twins");
 export const FROM_CHECKOUT = process.env.TYPESOL_REPO !== undefined;
-/** The TypeSOL sources: examples/, test/ports/, test/programs/, bench/anchor/. */
+/** The TypeSOL sources: examples/, test/ports/, test/programs/, test/anchor-twins/ (bench/anchor/ up to 0.25.0). */
 export const TYPESOL = path.resolve(process.env.TYPESOL_REPO ?? path.join(HERE, "vendor/typesol"));
 const compiler = (
   FROM_CHECKOUT ? await import(pathToFileURL(path.join(TYPESOL, "dist/compiler/index.js")).href) : await import("@typesol/cli/compiler")
@@ -68,7 +70,7 @@ export function toolchain() {
     get typesolBuild() {
       return compiled;
     },
-    anchorLang: crate(path.join(TYPESOL, "bench/anchor/Cargo.lock"), "anchor-lang") ?? crate(path.join(HERE, "vendor/typesol/bench/anchor/Cargo.lock"), "anchor-lang"),
+    anchorLang: crate(path.join(twinsOf(TYPESOL), "Cargo.lock"), "anchor-lang") ?? crate(path.join(twinsOf(path.join(HERE, "vendor/typesol")), "Cargo.lock"), "anchor-lang"),
     pinocchio: crate(path.join(HERE, "Cargo.lock"), "pinocchio"),
     // Metaplex Token Metadata, which the token ports call (scripts/setup.sh dumps it from mainnet-beta).
     tokenMetadataSha256: sha256(path.join(TYPESOL, "test/programs/mpl_token_metadata.so")),

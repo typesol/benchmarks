@@ -41,9 +41,9 @@ Paths in the TypeSOL and Anchor columns are in the TypeSOL repository (`vendor/t
 
 | Program | TypeSOL | Anchor | Native / Pinocchio |
 | --- | --- | --- | --- |
-| counter | `examples/counter.ts` | `bench/anchor/programs/counter` | `programs/{native,pinocchio}-counter` |
-| vault | `examples/vault.ts` | `bench/anchor/programs/vault` | `programs/{native,pinocchio}-vault` |
-| escrow (SPL Token CPIs) | `examples/escrow.ts` | `bench/anchor/programs/escrow` | `programs/{native,pinocchio}-escrow` |
+| counter | `examples/counter.ts` | `test/anchor-twins/programs/counter` | `programs/{native,pinocchio}-counter` |
+| vault | `examples/vault.ts` | `test/anchor-twins/programs/vault` | `programs/{native,pinocchio}-vault` |
+| escrow (SPL Token CPIs) | `examples/escrow.ts` | `test/anchor-twins/programs/escrow` | `programs/{native,pinocchio}-escrow` |
 
 The escrow round trip: `make` creates the offer PDA and moves mint A into a vault the offer owns; `take` pays the maker
 in mint B, releases the vault to the taker and closes the vault and the offer; `refund` returns the vault to the maker.
@@ -129,7 +129,7 @@ Caveats:
 
 `mainnet-escrow.ts` runs the official escrow against all four implementations deployed on mainnet-beta: the same
 `make_offer` / `take_offer` / `refund_offer` calls, each instruction alone in its transaction, with compute units read
-back from the confirmed transactions. `mainnet-escrow.json` holds the result (signatures and compute units only).
+back from the confirmed transactions. `results/mainnet-escrow.json` holds the result (signatures and compute units only).
 Running it again costs real SOL (rent and fees) and needs the four programs deployed: `RPC_URL` is a mainnet-beta RPC
 endpoint, and `KEYS_DIR` (default `~/.config/typesol/mainnet`) holds `funder.json`, the paying keypair. Keep keys out
 of this repository.

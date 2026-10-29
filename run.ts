@@ -25,12 +25,12 @@ import { existsSync, mkdtempSync, readFileSync, statSync, writeFileSync } from "
 import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { TYPESOL, build, toolchain } from "./typesol.ts";
+import { TYPESOL, build, toolchain, twinsOf } from "./typesol.ts";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 // The Anchor twins are built in the TypeSOL sources (a TYPESOL_REPO checkout without them falls back to vendor/typesol).
 const anchorSo = (name: string) =>
-  [TYPESOL, path.join(HERE, "vendor/typesol")].map((r) => path.join(r, `bench/anchor/target/deploy/anchor_${name}.so`)).find((p) => existsSync(p))!;
+  [TYPESOL, path.join(HERE, "vendor/typesol")].map((r) => path.join(twinsOf(r), `target/deploy/anchor_${name}.so`)).find((p) => existsSync(p))!;
 const SYSTEM = address("11111111111111111111111111111111");
 const ANCHOR_IDS: Record<string, Address> = {
   counter: address("EqGyjYr2RHtEV5zQXCPpZ8neqU9tMgmruvuJRW4Pz2aN"),

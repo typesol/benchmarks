@@ -6,7 +6,7 @@
 //
 // Keys live outside this repository, in KEYS_DIR (default ~/.config/typesol/mainnet): funder.json pays and is the maker,
 // taker.json is created and funded from it. RPC_URL is a mainnet-beta RPC endpoint (never printed). Results go to
-// mainnet-escrow.json (signatures and compute units only).
+// results/mainnet-escrow.json (signatures and compute units only).
 import {
   type Address,
   type Instruction,
@@ -34,7 +34,7 @@ import { getProgramDerivedAddress, getAddressEncoder } from "@solana/kit";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const KEYS = process.env.KEYS_DIR ?? path.join(os.homedir(), ".config/typesol/mainnet");
-const OUT = path.join(HERE, "mainnet-escrow.json");
+const OUT = path.join(HERE, "results/mainnet-escrow.json");
 
 const rpcUrl = (() => {
   const url = process.env.RPC_URL;
